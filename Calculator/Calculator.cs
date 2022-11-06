@@ -72,7 +72,7 @@ namespace Calculator
                 var result = firstNumber * secondNumber;
                 Result.Text = result.ToString();
             }
-            else if (_operation == "/")
+            else if (_operation == "/") // hej
             {
                 if (secondNumber == 0)
                 {
