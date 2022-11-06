@@ -57,38 +57,43 @@ namespace Calculator
             var firstNumber = double.Parse(_firstValue);
             var secondNumber = double.Parse(_secondValue);
 
-            if (_operation == "+")
+            double? res = null;
+            switch (_operation)
             {
-                var result = firstNumber + secondNumber;
-                Result.Text = result.ToString();
-            }
-            else if (_operation == "-")
-            {
-                var result = firstNumber - secondNumber;
-                Result.Text = result.ToString();
-            }
-            else if (_operation == "*")
-            {
-                var result = firstNumber * secondNumber;
-                Result.Text = result.ToString();
-            }
-            else if (_operation == "/") // hej
-            {
-                if (secondNumber == 0)
-                {
-                    Result.Text = "NaN";
-                }
-                var result = firstNumber / secondNumber;
-                Result.Text = result.ToString();
-            }
-            else if (_operation == "^2")
-            {
-                var result = firstNumber * secondNumber;
-                Result.Text = result.ToString();
-            }
+                case "+":
+                    res = firstNumber + secondNumber;
+                    Result.Text = res.ToString();
+                    break;
 
-            _operation = string.Empty;
-            _secondValue = string.Empty;
+                case "-":
+                    res = firstNumber - secondNumber;
+                    Result.Text = res.ToString();
+                    break;
+
+                case "*":
+                    res = firstNumber * secondNumber;
+                    Result.Text = res.ToString();
+                    break;
+
+                case "/":
+                    if (secondNumber == 0)
+                    {
+                        Result.Text = "NaN";
+                    }
+                    res = firstNumber / secondNumber;
+                    Result.Text = res.ToString();
+                    break;
+
+                case "^2":
+                    res = firstNumber * secondNumber;
+                    Result.Text = res.ToString();
+                    break;
+
+                default:
+                    _operation = string.Empty;
+                    _secondValue = string.Empty;
+                    break;
+            }
         }
 
         private void OnButtonClear(object sender, EventArgs e)
